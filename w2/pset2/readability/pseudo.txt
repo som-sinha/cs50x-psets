@@ -1,0 +1,26 @@
+NOTE: When calculating the Coleman-Liau index, the L and S need to be calculated as float (i.e. w to be casted to float)
+      Along with this first the raw_index in float needs to be calculated then that needs to be rounded to the closest value
+      using the round function in math.h
+
+
+1. Getting Input
+    get_string()
+    printf()
+2. Count letters
+    take string and loop through the chars until you reach null character
+        if the char is between A-Z (ASCII 65 - 90) or a-z (ASCII 97-122)
+        [Uses strcmp() from string.h]
+            increment count
+3. Count Words
+        Elegant and simple solution
+    while the end of string is not reached
+        if the text rn is a space(ascii 32)
+            if the text before was not a space(ascii 32)
+                word count is incremented by 1
+        if end of string reached
+            add 1 to word count
+4. Sentence Count
+    while the end of string is not reached
+        if the text rn is a '.' or '!' or '?'
+            if the text before was not a '.' or '!' or '?'
+                sentence count is incremented by 1
