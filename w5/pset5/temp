@@ -1,0 +1,29 @@
+// Loads dictionary into memory, returning true if successful else false
+bool load(const char *dictionary)
+{
+    FILE *dfile = fopen(dictionary, "r");
+    if (ferror(dfile))
+    {
+        return false;
+    }
+    while(!feof(dfile))
+    {
+        node* dword = malloc(sizeof(node));
+        fscanf(dfile, "%s", dword->word);
+        dword->next = NULL;
+
+        unsigned int indexh = hash(dword->word);
+        if (table[indexh] != NULL)
+        {
+            dword->next = table[indexh]->next;
+            table[indexh]->next = dword;
+        }
+        else
+        {
+            table[indexh] = dword;
+        }
+
+    }
+
+    return false;
+}
